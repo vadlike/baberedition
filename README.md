@@ -1,7 +1,7 @@
 script number 1
 
 
-### START ###]
+### START ###
 
 source: https://github.com/vadlike/baberedition/blob/main/dockerfull.sh
 
