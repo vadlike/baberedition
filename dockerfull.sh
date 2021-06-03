@@ -26,7 +26,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
     sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # portainer
-docker run -d -p 22221:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /docker/docker/host/data:/data portainer/portainer
+docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /docker/docker/host/data:/data portainer/portainer
 
 # show version dokcer and docker-compose
 docker -v && docker-compose --version
