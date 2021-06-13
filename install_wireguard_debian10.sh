@@ -2,7 +2,7 @@ echo 'deb http://ftp.debian.org/debian buster-backports main' | sudo tee /etc/ap
 
 apt update
 
-apt install -y wireguard sudo
+apt install -y wireguard sudo openresolv
 
 
 
