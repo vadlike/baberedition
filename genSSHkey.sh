@@ -13,3 +13,5 @@ chmod 0600 authorized_keys
 rm -f id_rsa.pub && rm -f genSSHkey.sh
 
 mv id_rsa movemetoyourspcpls
+
+chmod 0664 movemetoyourspcpls
