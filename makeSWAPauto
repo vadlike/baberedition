@@ -1,5 +1,8 @@
 #!/bin/sh
 
+apt-get update -y && apt-get upgrade -y
+apt install -y sudo
+
 # Do argument checks
 if [ ! "$#" -ge 1 ]; then
     echo "Usage: $0 {size}"
