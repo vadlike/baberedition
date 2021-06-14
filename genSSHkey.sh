@@ -1,6 +1,6 @@
 cd
 
-mkdir1 .ssh
+mkdir .ssh
 
 chmod 700 .ssh
 
@@ -10,7 +10,7 @@ rm authorized_keys
 
 ssh-keygen -t rsa -b 4096
 
-cd .ssh
+cd && cd \.ssh
 
 cat id_rsa.pub > authorized_keys
 
