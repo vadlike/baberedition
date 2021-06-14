@@ -1,18 +1,18 @@
 #disable systemd-logind и getty
-
+# off service
 systemctl disable getty@tty1
 
+# off service
 systemctl disable getty-static
 
-#add only this text
-echo "NAutoVTs=0
-ReserveVT=0" > /etc/systemd/logind.conf
+#add text
+echo 'NAutoVTs=0
+ReserveVT=0' >> /etc/systemd/logind.conf
 
 #add Nyan cat
-
 apt-get install nyancat -y
 
-
+#add only this text
 echo "[Unit]
 Description=nyancat on tty1
 After=graphical.target
@@ -31,6 +31,7 @@ RestartSec=2
 [Install]
 WantedBy=graphical.target" > /etc/systemd/system/nyancat-tty.service
 
+#enable service
 systemctl enable nyancat-tty.service
 
 # additional 
