@@ -32,4 +32,20 @@ WantedBy=graphical.target" > /etc/systemd/system/nyancat-tty.service
 
 systemctl enable nyancat-tty.service
 
+# additional
+
+systemctl mask getty\@tty1
+
+sed -i 's/ACTIVE/#ACTIVE/' /etc/default/console-setup
+
+
+
+echo "/etc/default/console-setup" >> /etc/default/console-setup
+
+echo "ACTIVE_CONSOLES="/dev/tty1"" > /etc/default/console-setup
+
+
+
+
+echo "ACTIVE_CONSOLES="/dev/tty1"" >> /etc/default/console-setup
 reboot
