@@ -10,7 +10,7 @@ rm authorized_keys
 
 ssh-keygen -t rsa -b 4096
 
-wait 2
+sleep 1s
 
 cat id_rsa.pub > authorized_keys
 
