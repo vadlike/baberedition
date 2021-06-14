@@ -39,5 +39,8 @@ fi
 if [ -f "/etc/network/interfaces.d/50-cloud-init.cfg" ]; then
    nano /etc/network/interfaces.d/50-cloud-init.cfg
 fi
+# fix resolf conf
+sed -i 's/127.0.1.1/#127.0.1.1/' /etc/hosts
+echo '127.0.1.1       $hostnamex' >> /etc/hosts
 
 clear
