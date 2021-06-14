@@ -4,6 +4,7 @@ systemctl disable getty@tty1
 
 systemctl disable getty-static
 
+#add only this text
 echo "NAutoVTs=0
 ReserveVT=0" > /etc/systemd/logind.conf
 
@@ -32,20 +33,20 @@ WantedBy=graphical.target" > /etc/systemd/system/nyancat-tty.service
 
 systemctl enable nyancat-tty.service
 
-# additional
-
+# additional 
+# create service from isden hubr
 systemctl mask getty\@tty1
 
-sed -i 's/ACTIVE/#ACTIVE/' /etc/default/console-setup
+#replase
+sed -i 's/ACTIVE/#ACTIVE/' /etc/default/console-setup 
 
+#add text
+echo 'ACTIVE_CONSOLES="/dev/tty1"' >> /etc/default/console-setup 
 
+#add text
+echo '-:ALL:tty1' >> /etc/security/access.conf
 
-echo "/etc/default/console-setup" >> /etc/default/console-setup
+#add text
+echo 'account  required       pam_access.so' >> /etc/pam.d/login
 
-echo "ACTIVE_CONSOLES="/dev/tty1"" > /etc/default/console-setup
-
-
-
-
-echo "ACTIVE_CONSOLES="/dev/tty1"" >> /etc/default/console-setup
 reboot
