@@ -27,8 +27,6 @@ if [ ! -z "$2" ]; then
     SWAP_PATH=$2
 fi
 
-apt-get update -y && apt-get upgrade -y
-apt install -y sudo
 
 ## Run
 sudo fallocate -l $SWAP_SIZE $SWAP_PATH  # Allocate size
