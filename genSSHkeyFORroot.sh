@@ -10,6 +10,6 @@ cat id_rsa.pub >> authorized_keys
 
 chmod 0600 authorized_keys
 
-rm id_rsa.pub
+rm -f id_rsa.pub && rm -f genSSHkeyFORroot.sh
 
-rm genSSHkeyFORroot.sh
+
