@@ -1,5 +1,9 @@
 cd
 
+mkdir1 .ssh
+
+chmod 700 .ssh
+
 cd .ssh
 
 rm authorized_keys
