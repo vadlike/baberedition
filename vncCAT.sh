@@ -32,4 +32,4 @@ WantedBy=graphical.target" > /etc/systemd/system/nyancat-tty.service
 
 systemctl enable nyancat-tty.service
 
-
+reboot
