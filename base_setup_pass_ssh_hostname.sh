@@ -90,6 +90,21 @@ fi
 
 clear
 #
+# edit pam politics
+#
+echo "account    required     pam_nologin.so
+@include common-account
+session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so close
+session    required     pam_loginuid.so
+session    optional     pam_keyinit.so force revoke
+@include common-session
+session    optional     pam_mail.so standard noenv # [1]
+session    required     pam_limits.so
+session    required     pam_env.so # [1]
+session    required     pam_env.so user_readenv=1 envfile=/etc/default/locale
+session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so open
+" > /etc/pam.d/sshd
+#
 # Updates
 #
 echo "unattended-upgrades"
