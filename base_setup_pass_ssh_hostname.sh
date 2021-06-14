@@ -33,7 +33,7 @@ fi
 #
 echo "apt update and install"
 apt update && apt upgrade -y && apt autoremove -y
-apt install ufw fail2ban  unattended-upgrades apt-listchanges -y 
+apt install unattended-upgrades apt-listchanges -y 
 mkdir /root/script_backupfiles/
 clear
 #
@@ -51,7 +51,7 @@ clear
 # SSH
 #
 echo "Set ssh config"
-read -p "Choose your SSH Port: (default 22) " -e -i 2222 sshport
+read -p "Choose your SSH Port: (default 22) " -e -i 9837 sshport
 ssh-keygen -f /etc/ssh/key1rsa -t rsa -b 4096 -N ""
 ssh-keygen -f /etc/ssh/key2ecdsa -t ecdsa -b 521 -N ""
 ssh-keygen -f /etc/ssh/key3ed25519 -t ed25519 -N ""
@@ -65,10 +65,13 @@ macs hmac-sha2-256,hmac-sha2-512,umac-128@openssh.com,hmac-sha2-512-etm@openssh.
 PermitRootLogin yes
 PasswordAuthentication yes
 ChallengeResponseAuthentication no
-UsePAM yes
+UsePAM no
 X11Forwarding no
 PermitEmptyPasswords no
 PrintMotd no
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+PermitEmptyPasswords no
 AcceptEnv LANG LC_*
 Subsystem sftp  internal-sftp" >> /etc/ssh/sshd_config
 clear
