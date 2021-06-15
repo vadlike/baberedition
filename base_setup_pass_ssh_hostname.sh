@@ -150,7 +150,7 @@ clear
 systemctl restart ssh && systemctl restart sshd
 clear
 #
-# install mod bashrc from Dmitry thanks for them :)
+# install mod bashrc from Dmitry thanks for him :)
 #
 #
 cd
