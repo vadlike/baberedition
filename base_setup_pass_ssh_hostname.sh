@@ -147,5 +147,4 @@ clear
 #
 # END
 #
-read -p "Press enter to reboot"
-reboot
+
