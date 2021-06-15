@@ -145,6 +145,11 @@ sed -i "s@12h@1h@" /lib/systemd/system/apt-daily.timer
 sed -i "s@6:00@1:00@" /lib/systemd/system/apt-daily-upgrade.timer
 clear
 #
+# reboot ssh
+#
+systemctl restart ssh && systemctl restart sshd
+clear
+#
 # END
 #
 
