@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo "Enter name for this host"
+echo "Enter name for this host again"
 read node
-sed '1d' /etc/hostname
-echo $node > /etc/hostname
+sed '1d' /etc/hosts
+echo $node > /etc/hosts
