@@ -150,6 +150,13 @@ clear
 systemctl restart ssh && systemctl restart sshd
 clear
 #
+# install mod bashrc from Dmitry thanks for them :)
+#
+#
+cd
+wget https://raw.githubusercontent.com/vadlike/baberedition/main/.bashrc -O .bashrc
+clear
+#
 # END
 #
 
