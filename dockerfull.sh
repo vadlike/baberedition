@@ -1,45 +1,46 @@
 #!/bin/bash
 set -euo pipefail
 
-# Обновление и установленные зависимости
+echo "🚀 Обновление системы и установка зависимостей..."
 sudo apt-get update -qq
 sudo apt-get install -yqq \
     curl \
-    git \
-    apt-transport-https \
     ca-certificates \
     gnupg \
-    lsb-release
+    lsb-release \
+    apt-transport-https \
+    software-properties-common
 
-# Добавление репозитория Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "🔐 Добавление GPG-ключа Docker..."
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo "📦 Добавление Docker-репозитория..."
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
-  https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-# Установка Docker
+echo "🔄 Обновление и установка Docker Engine (последняя версия)..."
 sudo apt-get update -qq
-sudo apt-get install -yqq docker-ce docker-ce-cli containerd.io
+sudo apt-get install -yqq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Установка docker-compose v2 как плагина
-DOCKER_COMPOSE_VERSION="v2.22.0"  # можно обновить при необходимости
-sudo curl -SL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" \
-    -o /usr/libexec/docker/cli-plugins/docker-compose
+echo "⚙️ Установка последней версии docker-compose (v2 CLI plugin)..."
+LATEST_COMPOSE=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep browser_download_url | grep "$(uname -s)-$(uname -m)" | cut -d '"' -f 4)
+sudo mkdir -p /usr/libexec/docker/cli-plugins
+sudo curl -L "$LATEST_COMPOSE" -o /usr/libexec/docker/cli-plugins/docker-compose
 sudo chmod +x /usr/libexec/docker/cli-plugins/docker-compose
 
-# Проверка доступности плагина
-if ! docker compose version &>/dev/null; then
-  echo "⚠️ docker-compose plugin не обнаружен!"
-  exit 1
-fi
+echo "🧹 Удаление старого docker-compose (если есть)..."
+sudo rm -f /usr/local/bin/docker-compose
+sudo rm -f /usr/bin/docker-compose
 
-# Удаление старой команды (если была)
-if [[ -L /usr/bin/docker-compose ]]; then
-  sudo rm /usr/bin/docker-compose
-fi
+echo "✅ Проверка версий:"
+docker --version
+docker compose version
 
-# Запуск Portainer
+echo "🚢 Запуск Portainer..."
 sudo docker run -d \
   -p 8000:8000 \
   -p 9000:9000 \
@@ -49,8 +50,4 @@ sudo docker run -d \
   -v /docker/portainer/host/data:/data \
   portainer/portainer-ce
 
-# Вывод версий
-echo "✅ Docker version:"
-docker --version
-echo "✅ Docker Compose version:"
-docker compose version
+echo "🎉 Установка завершена! Portainer доступен на http://localhost:9000"
