@@ -1,0 +1,51 @@
+{
+  "name": "Mega Merged Repo",
+  "identifier": "com.merged.mega",
+  "iconURL": "",
+  "website": "",
+  "apps": [
+    {
+      "name": "Flycast",
+      "bundleIdentifier": "com.flyinghead.Flycast",
+      "developerName": "Flyinghead",
+      "localizedDescription": "Flycast is a Dreamcast, Naomi, Naomi 2 and Atomiswave emulator.",
+      "iconURL": "https://github.com/flyinghead/flycast/raw/master/shell/linux/flycast.png",
+      "subtitle": "Dreamcast emulator",
+      "tintColor": "9b54fd",
+      "versions": [
+        {
+          "version": "2.5",
+          "date": "2025-05-07",
+          "size": 8161611,
+          "downloadURL": "https://github.com/flyinghead/flycast/releases/download/v2.5/Flycast-2.5.ipa"
+        }
+      ],
+      "version": "2.5",
+      "versionDate": "2025-05-07",
+      "size": 8161611,
+      "downloadURL": "https://github.com/flyinghead/flycast/releases/download/v2.5/Flycast-2.5.ipa"
+    },
+    {
+      "name": "iTorrent",
+      "bundleIdentifier": "ru.xitrix.iTorrent",
+      "developerName": "XITRIX",
+      "localizedDescription": "Interrupted interrupted interrupted",
+      "iconURL": "https://xitrix.github.io/iTorrent/icon.png",
+      "subtitle": "Interrupted interrupted interrupted",
+      "tintColor": "E83423",
+      "versions": [
+        {
+          "version": "2.0",
+          "date": "2025-01-01",
+          "size": 5000000,
+          "downloadURL": "https://github.com/XITRIX/iTorrent/releases/download/v2.0/iTorrent.ipa"
+        }
+      ],
+      "version": "2.0",
+      "versionDate": "2025-01-01",
+      "size": 5000000,
+      "downloadURL": "https://github.com/XITRIX/iTorrent/releases/download/v2.0/iTorrent.ipa"
+    }
+  ],
+  "news": []
+}
